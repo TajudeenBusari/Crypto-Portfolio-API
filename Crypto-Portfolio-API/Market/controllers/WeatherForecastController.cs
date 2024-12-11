@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crypto_Portfolio_API.Controllers
+namespace Crypto_Portfolio_API.Market.Controllers
 {
     [ApiController]
     [Route("[controller]")]
