@@ -51,12 +51,12 @@ namespace Crypto_Portfolio_API.Market.service.impl
                 {
                     
                     CryptoId = data.Id,
-                    
                     Symbol = data.Symbol,
                     Name = data.Name,
                     CurrentPrice = data.CurrentPrice != 0 ? data.CurrentPrice : 0m,// Ensure price is not 0
                     MarketCap = data.MarketCap != 0? data.MarketCap : 0, // Ensure market cap is not 0
                     LastUpdate = DateTime.UtcNow,
+                    //LastUpdate = data.LastUpdated
 
                 }).ToList();
 
@@ -164,13 +164,28 @@ namespace Crypto_Portfolio_API.Market.service.impl
     }
 
     //Dto for deserializing Coingheko API market data
-    public class CoinMarketData: DomainBase
+    public class CoinMarketData//: DomainBase
     {
-       public string Id { get; set; }
-       public string LastUpdated { get; set; }
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+       
+       [JsonPropertyName("last_updated")]
+       public DateTime LastUpdated { get; set; }
+       
+       [JsonPropertyName("symbol")]
+       public string Symbol { get; set; } //"BTC"
+
+       [JsonPropertyName("name")]
+       public string Name { get; set; } //"Bitcoin"
+
+       [JsonPropertyName("market_cap")]
+       public decimal? MarketCap { get; set; } // 1980069276557
+
+       [JsonPropertyName("current_price")]
+       public decimal? CurrentPrice { get; set; } // 100000.5
     }
 
-    // DTO for trending data
+    // DTO for trending data from coinghecko API
     public class TrendingResponse
     {
         public List<TrendingCoinDTO> Coins { get; set; }

@@ -24,4 +24,8 @@
     <Folder Include="Market\mapper\" />
   </ItemGroup>
 
+  <ItemGroup>
+	  <InternalsVisibleTo Include = "Crypto-portfolio-API-IntegrationTests"/>
+  </ItemGroup>
+
 </Project>

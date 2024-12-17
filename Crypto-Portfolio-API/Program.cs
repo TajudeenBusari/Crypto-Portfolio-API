@@ -68,3 +68,4 @@ void ApplyDataBaseSeed()
         }
     }
 }
+public partial class Program { }
